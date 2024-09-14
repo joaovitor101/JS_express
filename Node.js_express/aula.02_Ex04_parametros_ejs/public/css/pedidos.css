@@ -1,0 +1,18 @@
+#centro{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+table{
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    border-collapse: collapse; /* Remove espaçamento entre as células */
+}
+
+th,td{
+    border: 0 solid #ddd; /* Define a borda das células */
+    padding: 8px; /* Espaçamento interno das células */
+    text-align: left; /* Alinhamento do texto */
+}
+

@@ -1,0 +1,12 @@
+.all{
+    display: flex;
+    justify-content: center;
+    gap: 100px;
+    align-items: center;
+    margin-top: 100px;
+}
+#produto, a{
+    text-decoration: none; 
+    color: inherit; 
+
+}
