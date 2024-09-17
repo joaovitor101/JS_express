@@ -1,103 +1,66 @@
-const express = require("express");
+// Importando o Express na aplicação
+const express = require("express"); // CommomJS Modules
+// Criando uma instância do Express
 const app = express();
-//Definindo o EJS como renderizador de pagina
 
-app.set('view engine', 'ejs')
-//Definir a pasta dos arquivos estáticos
-
-app.use(express.static('public'))
-//rota main
-app.get("/", (req, res) => {   
-  //será renderizada a pagina index.ejs que está na pasta views
-    res.render('index')
-})
-
-app.get("/perfil", (req, res) => {   
-  //será renderizada a pagina index.ejs que está na pasta views
-    const user = {
-      nome: 'João Vitor',
-      idade: 19,
-      email: 'joao.kusaka@fatec.sp.gov.br'
-    };
-    res.render('perfil', { user: user });
-})
-
-const videos = [
-  { title: 'Never Gonna Give You Up', url: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ' },
-  { title: 'Video 2', url: 'http://example.com/video2' },
-  { title: 'Video 3', url: 'http://example.com/video3' }
-];
-
-app.get("/videos", (req, res) => {   
-  //será renderizada a pagina index.ejs que está na pasta views
-  res.render('videos', { videos: videos });
-})
-
-app.get("/produtos/:produto?", (req, res) => {   
-  //será renderizada a pagina index.ejs que está na pasta views
-  const listaProdutos = ['Computador', 'Celular', 'Tablet', 'Notebook'];
-  const produto = req.params.produto
-    res.render('produtos', { 
-      produto: produto,
-      listaProdutos : listaProdutos
-    })
-})
-
-//Rota perfil
-// :nome é um parâmetro obrigatório
-app.get("/perfil/:nome?", (req, res) =>{
-  const nome = req.params.nome
-
-  if(nome) {
-    res.send(`Olá, ${nome}! You're.`)
-  } else{
-    res.send(`faça login`);
-  }
-
-})
-
-//Rota video
-// :playlist? e :video - parâmetros opcionais
-app.get("/videos/:playlist?/:video?", (req, res) =>{
-  const playlist = req.params.playlist
-  const video = req.params.video
-  if(playlist && video == undefined){
-    res.send(`<h2>Você está na playlist ed ${playlist}. </h2>`)
-  }
-  //parâmetros = true
-  if(playlist && video){
-    res.send(`<h2>Você está na playlist ed ${playlist}. </h2> <br> Reproduzindo o video ${video}...`)
-  } else{
-    res.send("<h1>Página de vídeo</h1>")
-  }
-
-})
-//
-
-
-
-
-
-const port = 8080
-
-app.listen(port, (error) => {
-  if (error) {
-    console.log(`Ocorreu um erro: ${error}`);
-  } else {
-    console.log(`Servidor iniciado com sucesso em: http://localhost:${port}`);
-  }
+app.set("view engine", "ejs");
+// CRIANDO A ROTA PRINCIPAL
+app.get("/", function (req, res) {
+  res.render("index"); // Render é usado para renderizar a página
 });
 
+// ROTA DE PERFIL
+app.get("/perfil/:nome?", function (req, res) {
+  const nome = req.params.nome;
+  res.render("perfil", {
+    nome: nome,
+  });
+});
 
+// ROTA DE VÍDEOS
+app.get("/videos/:playlist?/:video?", (req, res) => {
+  const playlist = req.params.playlist;
+  const video = req.params.video;
+  const listaPlaylist = ["Machine Learning", "Deep Learning", "Docker e Kubernetes", "Automação com Ansible", "DevOps Fundamentals"];
+  const listaVideo = ["Aula 1- Udacity", "Aula 3- Coursera", "Aula 4- edX", "Aula 5- Codecademy"];
+  res.render("videos", {
+    playlist: playlist,
+    video: video,
+    listaVideo: listaVideo,
+    listaPlaylist: listaPlaylist,
+  });
+});
+
+// ROTA DE PRODUTOS
+app.get("/produtos/:produto?", (req, res) => {
+  const listaProdutos = ["Computador", "Tablet", "Celular", "Notebook"];
+  const produto = req.params.produto;
+  res.render("produtos", {
+    produto: produto, // Envia o parâmetro para a página
+    listaProdutos: listaProdutos,
+    // Na pagina produtos.ejs haverá uma testagem de condição
+  });
+});
+
+// ROTA PEDIDOS
 app.get("/pedidos", (req, res) => {
   const pedidos = [
     {produto: "Celular", valor: 3000},
     {produto: "Computador", valor: 4000},
     {produto: "Tablet", valor: 2000},
     {produto: "Notebook", valor: 3800}
-  
   ]
   res.render("pedidos", {
+    // Envia o array de objetos para a página
     pedidos: pedidos,
   })
-})
+});
+
+// Iniciando o servidor na porta 8080
+app.listen(8080, (error) => {
+  if (error) {
+    console.log(`Ocorreu um erro: ${error}`);
+  } else {
+    console.log("Servidor iniciado com sucesso!");
+  }
+});

@@ -1,17 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f2f5;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
 
-<link rel="stylesheet" href="/css/perfil.css">
+        .container {
+            text-align: center;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            max-width: 400px;
+            width: 100%;
+        }
 
-<%- include ('partials/navbar.ejs') %>
-<%- include ('partials/header.ejs') %>
+        h1 {
+            color: #4a90e2;
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
 
+        .login-message {
+            color: #d9534f;
+        }
 
-<div class="container">
-    <div class="full">
-    <div class="box1">
-<p>Nome: <%= user.nome %></p>
-<p>Idade: <%= user.idade %></p>
-<p>Email: <%= user.email %></p>
-        </div>
+        .welcome-message {
+            color: #5bc0de;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <% if(!nome) { %>
+            <h1 class="login-message">Faça login</h1>
+        <% } else { %>
+            <h1 class="welcome-message">Bem vindo(a) <%= nome %></h1>
+        <% } %>
     </div>
-</div>
-<%- include ('partials/footer.ejs') %>
+</body>
+</html>

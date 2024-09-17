@@ -1,0 +1,19 @@
+<%- include ('partials/navbar.ejs') %>
+<%- include ('partials/header.ejs') %>
+
+
+<link rel="stylesheet" href="/css/produtos.css">
+    <h1>Conheça nossos produtos</h1>
+    <%= produto %>
+
+    <!-- <% if (!produto) { %> 
+        <p><%= listaProdutos %></p>
+    <% } %> -->
+    <div class="all">
+    <% if(!produto) { %>
+        <% listaProdutos.forEach((produto) => { %>
+            <p> <a href="/produtos/<%= produto %>" id="produto"> <%= produto %></a></p>
+       <% }) %>
+    <% } %> 
+</div>
+    <%- include ('partials/footer.ejs') %>

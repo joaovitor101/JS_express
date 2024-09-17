@@ -1,14 +1,14 @@
 {
-  "name": "aula1",
+  "name": "aula.02-view-engine-ejs",
   "version": "1.0.0",
-  "description": "Conceitos iniciais do Express",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "npx nodemon index.js"
   },
-  "author": "joão",
+  "author": "",
   "license": "ISC",
+  "description": "",
   "dependencies": {
     "ejs": "^3.1.10",
     "express": "^4.19.2",

@@ -1,19 +1,27 @@
-<%- include ('partials/navbar.ejs') %>
-<%- include ('partials/header.ejs') %>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Produtos</title>
+</head>
+<body>
+    <h1>Conheça os nossos produtos</h1>
+    <hr>
+    <!-- Tags EJS chamando a variável que veio do index.js -->
+    <!-- Sempre que for concatenar uma variável, coloca o = depois do < % -->
+    <%= produto %> 
 
-
-<link rel="stylesheet" href="/css/produtos.css">
-    <h1>Conheça nossos produtos</h1>
-    <%= produto %>
-
-    <!-- <% if (!produto) { %> 
+    <!-- Condição para verificar se o produto não foi passado -->
+    <% if (!produto) { %>
         <p><%= listaProdutos %></p>
-    <% } %> -->
-    <div class="all">
+    <% } %>
+
+    <!-- ForEach para percorrer a lista de produtos -->
     <% if(!produto) { %>
         <% listaProdutos.forEach((produto) => { %>
-            <p> <a href="/produtos/<%= produto %>" id="produto"> <%= produto %></a></p>
-       <% }) %>
-    <% } %> 
-</div>
-    <%- include ('partials/footer.ejs') %>
+            <p><a href="/produtos/<%= produto %>"><%= produto %></a></p>
+        <% }); %>
+    <% } %>
+</body>
+</html>
