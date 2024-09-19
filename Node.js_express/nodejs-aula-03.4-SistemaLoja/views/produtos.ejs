@@ -1,0 +1,42 @@
+<%- include('partials/header.ejs') %>
+<%- include('partials/navbar.ejs') %>
+
+<style>
+    body {
+        background-color: #f0f2f5; /* Fundo suave */
+    }
+    .card {
+        background: rgba(255, 255, 255, 0.9); /* Fundo do card com transparência */
+        border-radius: 10px; /* Bordas arredondadas */
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Sombra leve */
+        margin-top: 2rem; /* Espaçamento superior */
+        padding: 1rem; /* Espaçamento interno */
+    }
+    .card img {
+        width: 30px; /* Tamanho da imagem */
+        border-radius: 50%; /* Imagem redonda */
+    }
+    .product-container {
+        display: flex; /* Usar flexbox para disposição */
+        flex-wrap: wrap; /* Permitir que os cards se movam para a linha de baixo */
+        justify-content: space-between; /* Espaçar os cards */
+    }
+</style>
+
+<div class="container">
+    <h1 class="h5">Produtos</h1>
+    <div class="product-container">
+        <% produtos.forEach(produto => { %>
+        <div class="card" style="flex: 1 1 calc(25% - 1rem); margin: 0.5rem;">
+            <div class="card-body">
+                <img src="imgs/product.png" alt="Produto">
+                <h5><%= produto.nome %></h5>
+                <p>Preço: <%= produto.preco.toLocaleString('pt-br', {style: 'currency', currency: 'BRL'}) %></p>
+                <p>Categoria: <%= produto.categoria %></p>
+            </div>
+        </div>
+        <% }) %>
+    </div>
+</div>
+
+<%- include('partials/footer.ejs') %>

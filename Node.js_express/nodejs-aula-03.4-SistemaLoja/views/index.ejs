@@ -1,0 +1,71 @@
+<%- include('partials/header.ejs') %>
+<%- include('partials/navbar.ejs') %>
+
+<style>
+    body {
+        background-color: #f0f2f5; /* Fundo suave */
+    }
+    .jumbotron {
+        background: rgba(255, 255, 255, 0.8); /* Fundo branco com transparência */
+        border-radius: 10px; /* Bordas arredondadas */
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Sombra leve */
+        padding: 2rem; /* Espaçamento interno */
+        margin-bottom: 2rem; /* Espaçamento inferior */
+    }
+    .card {
+        background: rgba(255, 255, 255, 0.9); /* Fundo do card com transparência */
+        border-radius: 10px; /* Bordas arredondadas */
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Sombra leve */
+        padding: 1.5rem; /* Espaçamento interno */
+    }
+    .btn-primary {
+        background-color: #007bff; /* Azul padrão */
+        border-color: #007bff; /* Bordas azuis */
+        transition: background-color 0.3s; /* Transição suave */
+    }
+    .btn-primary:hover {
+        background-color: #0056b3; /* Azul mais escuro ao passar o mouse */
+    }
+    .card-header {
+        background-color: #343a40; /* Cabeçalho escuro */
+        color: white; /* Texto branco */
+        border-top-left-radius: 10px; /* Bordas arredondadas no topo */
+        border-top-right-radius: 10px; /* Bordas arredondadas no topo */
+        padding: 1rem; /* Espaçamento interno */
+    }
+    a.text-dark {
+        color: #495057; /* Cor escura para links */
+    }
+    a.text-dark:hover {
+        color: #007bff; /* Azul ao passar o mouse */
+        text-decoration: underline; /* Sublinhado ao passar o mouse */
+    }
+</style>
+
+<div class="container mt-4">
+    <div class="jumbotron">
+        <h1 class="display-5"><strong>Bem-vindo(a) ao painel administrativo!</strong></h1>
+        <p class="lead">Através deste painel, você pode listar clientes, produtos e pedidos.</p>
+        <hr class="my-4">
+        <p class="currentDate"></p>
+        <p class="lead">
+            <a class="btn btn-success btn-lg" href="/pedidos" role="button">Verificar pedidos</a>
+        </p>
+    </div>
+
+    <div class="card">
+        <div class="card-header">
+            <h2>Para onde deseja ir?</h2>
+        </div>
+        <div class="card-body">
+            <ul class="list-unstyled">
+                <li><a href="/" class="text-dark">Home</a></li>
+                <li><a href="/clientes" class="text-dark">Clientes</a></li>
+                <li><a href="/produtos" class="text-dark">Produtos</a></li>
+                <li><a href="/pedidos" class="text-dark">Pedidos</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<%- include('partials/footer.ejs') %>

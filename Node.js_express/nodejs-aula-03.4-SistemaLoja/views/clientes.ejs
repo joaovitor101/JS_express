@@ -1,0 +1,65 @@
+<%- include('partials/header.ejs') %>
+<%- include('partials/navbar.ejs') %>
+
+<style>
+    body {
+        background-color: #f0f2f5; /* Fundo suave */
+    }
+    .card {
+        background: rgba(255, 255, 255, 0.9); /* Fundo do card com transparência */
+        border-radius: 10px; /* Bordas arredondadas */
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Sombra leve */
+        margin-top: 2rem; /* Espaçamento superior */
+    }
+    table {
+        width: 100%; /* Tabela ocupa toda a largura do card */
+        border-collapse: collapse; /* Colapsa as bordas */
+    }
+    th, td {
+        padding: 1rem; /* Espaçamento interno */
+        text-align: left; /* Alinhamento à esquerda */
+    }
+    th {
+        background-color: #343a40; /* Cabeçalho escuro */
+        color: white; /* Texto branco */
+    }
+    tr:hover {
+        background-color: rgba(0, 123, 255, 0.1); /* Efeito de hover nas linhas */
+    }
+    img {
+        width: 30px; /* Tamanho da imagem */
+        border-radius: 50%; /* Imagem redonda */
+    }
+</style>
+
+<div class="container">
+    <div class="card">
+        <div class="card-header">
+            <h1 class="h5">Clientes</h1>
+        </div>
+        <div class="card-body">
+            <table>
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>Nome:</th>
+                        <th>CPF:</th>
+                        <th>Endereço:</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% clientes.forEach(cliente => { %>
+                    <tr>
+                        <td><img src="imgs/avatar.png" alt="Cliente"></td>
+                        <td><%= cliente.nome %></td>
+                        <td><%= cliente.cpf %></td>
+                        <td><%= cliente.endereco %></td>
+                    </tr>
+                    <% }) %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<%- include('partials/footer.ejs') %>
