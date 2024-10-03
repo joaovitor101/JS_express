@@ -60,8 +60,9 @@
                                     <td>
                                         <%= cliente.endereco %>
                                     </td>
-                                    <td><a style="color:orange" href="#"></a>Editar</td>
-                                    <td><a style="color: red" href="/clientes/delete/<%= cliente.id %>"></a>Deletar</td>
+                                    <td><a style="color:orange" href="/clientes/edit/<%= cliente.id %>">Editar</a></td>
+                                    <td><a style="color: red" href="/clientes/delete/<%= cliente.id %>">Deletar</a></td>
+
                                 </tr>
                                 <% }) %>
                         </tbody>
