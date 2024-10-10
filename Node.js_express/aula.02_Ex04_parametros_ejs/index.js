@@ -22,7 +22,7 @@ app.get("/videos/:playlist?/:video?", (req, res) => {
   const playlist = req.params.playlist;
   const video = req.params.video;
   const listaPlaylist = ["Machine Learning", "Deep Learning", "Docker e Kubernetes", "Automação com Ansible", "DevOps Fundamentals"];
-  const listaVideo = ["Aula 1- Udacity", "Aula 3- Coursera", "Aula 4- edX", "Aula 5- Codecademy"];
+  const listaVideo = ["Aula 1- Udacity", "Aula 2- Coursera", "Aula 3- edX", "Aula 4- Codecademy"];
   res.render("videos", {
     playlist: playlist,
     video: video,

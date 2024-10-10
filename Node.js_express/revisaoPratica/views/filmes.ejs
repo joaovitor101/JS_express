@@ -1,0 +1,141 @@
+<%- include('./partials/header.ejs') %>
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 20px;
+    }
+
+    .container {
+        max-width: 800px;
+        margin: auto;
+        background: white;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+        text-align: center;
+        color: #333;
+    }
+
+    label {
+        display: block;
+        margin: 10px 0 5px;
+        font-weight: bold;
+    }
+
+    input[type="text"] {
+        width: 100%;
+        padding: 8px;
+        margin-bottom: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+
+    button {
+        padding: 10px 15px;
+        margin-right: 5px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+    button[type="submit"] {
+        background-color: #28a745;
+        color: white;
+    }
+
+    button[type="submit"]:hover {
+        background-color: #218838;
+    }
+
+    button[type="reset"] {
+        background-color: #ffc107;
+        color: black;
+    }
+
+    button[type="reset"]:hover {
+        background-color: #e0a800;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+    }
+
+    th, td {
+        padding: 12px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+    }
+
+    th {
+        background-color: #007bff;
+        color: white;
+    }
+
+    tr:hover {
+        background-color: #f1f1f1;
+    }
+
+    a {
+        text-decoration: none;
+        color: red;
+    }
+
+    a:hover {
+        text-decoration: underline;
+    }
+</style>
+
+<div class="container">
+    <h1>Cadastrar novo filme</h1>
+    <form action="/filmes/new" method="post">
+        <label for="titulo">Título</label>
+        <input type="text" name="titulo" id="titulo" />
+        
+        <label for="genero">Gênero</label>
+        <input type="text" name="genero" id="genero" />
+        
+        <label for="duracao">Duração</label>
+        <input type="text" name="duracao" id="duracao" />
+        
+        <button type="submit">Cadastrar</button>
+        <button type="reset">Limpar</button>
+    </form>
+    
+    <br />
+    <hr />
+    <br />
+    
+    <table>
+        <thead>
+            <tr>
+                <th>Título:</th>
+                <th>Gênero:</th>
+                <th>Duração:</th>
+                <th>Ações:</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% filmes.forEach(filme => { %>
+            <tr>
+                <td><%= filme.titulo %></td>
+                <td><%= filme.genero %></td>
+                <td><%= filme.duracao %> min</td>
+                <td>
+                    <a href="/filmes/delete/<%= filme.id %>" onclick="return confirm('Deseja realmente excluir o filme <%= filme.titulo %>?')">Deletar</a>
+                </td>
+            </tr>
+            <% }) %>
+        </tbody>
+    </table>
+</div>
+
+<%- include('./partials/footer.ejs') %>
