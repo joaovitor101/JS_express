@@ -14,20 +14,25 @@ router.get("/produtos", function (req, res) {
   });
 });
 
-// ROTA DE CADASTRO DE CLIENTES
+// ROTA DE CADASTRO DE PRODUTOS
 
-router.post("/produto/new", (req, res) => {
+router.post("/produtos/new", (req, res) => {
   const nome = req.body.nome;
   const preco = req.body.preco;
   const categoria = req.body.categoria;
-  Cliente.create({
+
+  Produto.create({
     nome: nome,
     preco: preco,
     categoria: categoria,
   }).then(() => {
     res.redirect("/produtos");
+  }).catch((error) => {
+    console.log(error);
+    res.status(500).send("Erro ao cadastrar o produto.");
   });
 });
+
 
 router.get("/produtos/delete/:id", (req, res) => {
   const id = req.params.id;
@@ -60,7 +65,7 @@ router.post("/produtos/update", (req, res) => {
   const preco = req.body.preco;
   const categoria = req.body.categoria;
 
-  Cliente.update(
+  Produto.update(
     {
       nome: nome,
       preco: preco,

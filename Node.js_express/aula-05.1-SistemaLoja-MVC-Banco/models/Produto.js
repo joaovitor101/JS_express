@@ -12,7 +12,7 @@ const Produto = connection.define('produtos', {
     },
 
     preco:{
-        type: Sequelize.FLOAT,
+        type: Sequelize.STRING,
         allowNull: false
     },
 
