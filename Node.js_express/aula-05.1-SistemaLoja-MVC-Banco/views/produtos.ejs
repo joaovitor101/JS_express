@@ -1,74 +1,158 @@
-<%- include ('partials/header.ejs') %>
-<%- include ('partials/navbar.ejs') %>
+<%- include('partials/header.ejs') %>
+<%- include('partials/navbar.ejs') %>
 
-        <div class="container">
-            <div class="card">
-                <div class="card-header">
-                    <h1>Cadastrar Produto</h1>
-                </div>
-            
+<style>
+    body {
+        background-color: #E2DFD2; /* Fundo claro */
+        color: #333; /* Texto escuro */
+        font-family: 'Arial', sans-serif; /* Fonte limpa */
+        margin: 0;
+        padding: 20px;
+    }
 
-                <div class="card-body">
-                    <form action="/produtos/new" method="post">
-                        <label>Nome do cliente: </label>
-                        <input type="text" name="nome" id="nome" placeholder="Insira o nome do produto"
-                        class="form-control" required>
-                        
-                        <label>Preço: </label>
-                        <input type="text" name="cpf" id="cpf" placeholder="Insira o preço do produto"
-                        class="form-control" required>
-                        
-                        <label>Endereço: </label>
-                        <input type="text" name="endereco" id="endereco" placeholder="Insira o endereco do cliente"
-                        class="form-control" required>
-                        <br>
-                        <input type="submit" class="btn btn-success" value="Cadastrar">
+    .container {
+        max-width: 900px; /* Largura máxima do container */
+        margin: 0 auto; /* Centraliza o container */
+        padding: 20px;
+        background-color: #FFF5EE; /* Fundo do container */
+        border-radius: 8px; /* Cantos arredondados */
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2); /* Sombra suave */
+    }
 
-                    </form>
-                    <hr>
-                </div>
-            </div>
+    .card {
+        margin-bottom: 20px; /* Espaçamento entre cards */
+        border-radius: 8px; /* Cantos arredondados */
+        border: none; /* Remove borda padrão */
+    }
+
+    .card-header {
+        background-color: #E2DFD2; /* Cabeçalho claro */
+        color: #333; /* Texto escuro */
+        padding: 15px; /* Padding do cabeçalho */
+        border-radius: 8px 8px 0 0; /* Cantos arredondados no topo */
+        text-align: center; /* Centraliza o texto */
+        font-size: 1.5em; /* Tamanho maior do título */
+    }
+
+    .card-body {
+        padding: 20px; /* Padding interno */
+    }
+
+    .form-control {
+        width: 100%; /* Largura total */
+        padding: 12px; /* Padding interno */
+        margin-bottom: 15px; /* Espaçamento entre campos */
+        border: 1px solid #ccc; /* Bordas claras */
+        border-radius: 4px; /* Cantos levemente arredondados */
+        background-color: #fff; /* Fundo dos campos */
+        color: #333; /* Texto escuro */
+        transition: border-color 0.3s; /* Transição suave para bordas */
+    }
+
+    .form-control:focus {
+        border-color: #007bff; /* Azul ao focar */
+        outline: none; /* Remove contorno padrão */
+    }
+
+    .btn-success {
+        background-color: #007bff; /* Azul */
+        color: white; /* Texto branco */
+        padding: 10px 20px; /* Padding do botão */
+        border: none; /* Remove borda padrão */
+        border-radius: 4px; /* Cantos arredondados */
+        cursor: pointer; /* Mão ao passar o mouse */
+        transition: background-color 0.3s; /* Transição suave */
+    }
+
+    .btn-success:hover {
+        background-color: #0056b3; /* Azul escuro no hover */
+    }
+
+    .table {
+        width: 100%; /* Largura total */
+        border-collapse: collapse; /* Remove espaços entre células */
+        margin-top: 20px; /* Espaço acima da tabela */
+    }
+
+    .table th, .table td {
+        padding: 12px; /* Espaçamento nas células */
+        text-align: left; /* Alinhamento à esquerda */
+        border: 1px solid #ccc; /* Bordas claras */
+    }
+
+    .table th {
+        background-color: #E2DFD2; /* Cabeçalho claro */
+        color: #333; /* Texto escuro */
+        font-weight: bold; /* Texto em negrito */
+    }
+
+    .table tr:nth-child(even) {
+        background-color: #f9f9f9; /* Linhas pares com fundo claro */
+    }
+
+    .table a {
+        color: #007bff; /* Links em azul */
+        text-decoration: none; /* Remove sublinhado */
+        transition: color 0.3s; /* Transição suave para hover */
+    }
+
+    .table a:hover {
+        text-decoration: underline; /* Sublinha ao passar o mouse */
+        color: #0056b3; /* Azul escuro no hover */
+    }
+</style>
+
+<div class="container">
+    <div class="card">
+        <div class="card-header">
+            <h1>Cadastrar Produto</h1>
         </div>
-        <br>
-
-        <div class="container">
-            <div class="card">
-                <div class="card-header">
-                    <h1>Clientes</h1>
-                </div>
-                <div class="card-body">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th></th>
-                                <th>Nome:</th>
-                                <th>CPF:</th>
-                                <th>Endereço:</th>
-                                <th colspan="2">Ações:</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <% produtos.forEach(produto=> { %>
-                                <tr>
-                                    <td><img src="imgs/avatar.png" width="30px"></td>
-                                    <td>
-                                        <%= produto.nome %>
-                                    </td>
-                                    <td>
-                                        <%= produto.preco %>
-                                    </td>
-                                    <td>
-                                        <%= produto.categoria %>
-                                    </td>
-                                    <td><a style="color:orange" href="/produtos/edit/<%= produto.id %>">Editar</a></td>
-                                    <td><a style="color: red" href="/produtos/delete/<%= produto.id %>">Deletar</a></td>
-
-                                </tr>
-                                <% }) %>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
+        <div class="card-body">
+            <form action="/produtos/new" method="post">
+                <label>Nome do produto: </label>
+                <input type="text" name="nome" id="nome" placeholder="Insira o nome do produto" class="form-control" required>
+                
+                <label>Preço: </label>
+                <input type="text" name="preco" id="preco" placeholder="Insira o preço do produto" class="form-control" required>
+                
+                <label>Categoria: </label>
+                <input type="text" name="categoria" id="categoria" placeholder="Insira a categoria do produto" class="form-control" required>
+                
+                <input type="submit" class="btn btn-success" value="Cadastrar">
+            </form>
         </div>
+    </div>
+</div>
 
-<%- include ('partials/footer.ejs') %>
+<div class="container mt-5">
+    <div class="card">
+        <div class="card-header">
+            <h1>Produtos</h1>
+        </div>
+        <div class="card-body">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Nome:</th>
+                        <th>Preço:</th>
+                        <th>Categoria:</th>
+                        <th colspan="2">Ações:</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% produtos.forEach(produto => { %>
+                        <tr>
+                            <td><%= produto.nome %></td>
+                            <td><%= produto.preco %></td>
+                            <td><%= produto.categoria %></td>
+                            <td><a href="/produtos/edit/<%= produto.id %>"><i class="bi bi-pencil"></i> Editar</a></td>
+                            <td><a href="/produtos/delete/<%= produto.id %>"><i class="bi bi-trash3"></i> Deletar</a></td>
+                        </tr>
+                    <% }) %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<%- include('partials/footer.ejs') %>
