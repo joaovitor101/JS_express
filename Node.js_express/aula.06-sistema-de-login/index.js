@@ -3,7 +3,7 @@ import express from 'express'
 // Iniciando o Express na variável app
 const app = express()
 // Importando o Sequelize (com os dados da conexão)
-import connection from './config/sequelize-config.js'
+import connection from './config/sequelize-config.js' 
 // Importando os Controllers (onde estão as rotas) 
 import ClientesController from "./controllers/ClientesController.js" 
 import ProdutosController from "./controllers/ProdutosController.js" 
