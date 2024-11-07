@@ -1,0 +1,54 @@
+<%- include ('partials/header.ejs') %>
+<!--  -->
+<%- include ('partials/navbar.ejs') %>
+<!--  -->
+<% if(successMessage.length) { %>
+<div id="flash-message" class="alert alert-success mx-4">
+	<%= successMessage[0] %>
+</div>
+<% } else if(errorMessage.length) { %>
+<div id="flash-message" class="alert alert-danger mx-4">
+	<%= errorMessage[0] %>
+</div>
+<% } else {} %>
+
+<div class="container col-4">
+	<div class="card mt-4">
+		<div class="card-header bg-dark text-light">
+			<h1>Cadastro de usuário</h1>
+		</div>
+		<div class="card-body">
+			<form action="/createUser" method="post">
+				<label for="">E-mail:</label>
+				<input
+					type="text"
+					name="email"
+					id="email"
+					placeholder="nome@exemplo.com"
+					class="form-control"
+					required
+				/>
+
+				<label for="">Senha:</label>
+				<input
+					type="password"
+					name="senha"
+					id="senha"
+					minlength="6"
+					placeholder="Insira sua senha"
+					class="form-control"
+					required
+				/>
+
+				<br />
+				<input type="submit" class="btn btn-success" value="Entrar" />
+			</form>
+			<hr />
+			<h6 class="text-secondary">
+				Já possui conta?<a href="/login">Entre!</a>
+			</h6>
+		</div>
+	</div>
+</div>
+
+<%- include ('partials/footer.ejs') %>

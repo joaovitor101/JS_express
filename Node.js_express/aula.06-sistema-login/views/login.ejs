@@ -1,0 +1,68 @@
+<%- include ('partials/header.ejs') %>
+<!--  -->
+<%- include ('partials/navbar.ejs') %>
+<!--  -->
+<% if(successMessage.length) { %>
+<div id="flash-message" class="alert alert-success mx-4">
+	<%= successMessage[0] %>
+</div>
+<% } else if(errorMessage.length) { %>
+<div id="flash-message" class="alert alert-danger mx-4">
+	<%= errorMessage[0] %>
+</div>
+<% } else {} %>
+
+<div class="container col-4">
+	<div class="card mt-4">
+		<div class="card-header bg-dark text-light">
+			<h1>Login de administrador</h1>
+		</div>
+		<div class="card-body">
+			<h6 class="text-danger">
+				Você precisa estar logado para acessar os recursos do painel.
+			</h6>
+			<form action="/authenticate" method="post">
+				<label for="">E-mail:</label>
+				<input
+					type="text"
+					name="email"
+					id="email"
+					placeholder="nome@exemplo.com"
+					class="form-control"
+					required
+				/>
+
+				<label for="">Senha:</label>
+				<input
+					type="password"
+					name="senha"
+					id="senha"
+					placeholder="Insira sua senha"
+					class="form-control"
+					required
+				/>
+
+				<br />
+				<input type="submit" class="btn btn-success" value="Entrar" />
+			</form>
+			<hr />
+			<h6 class="text-secondary">
+				Não possui conta?<a href="/register">Cadastre-se!</a>
+			</h6>
+		</div>
+	</div>
+</div>
+<!-- 
+<script>
+	setTimeout(() => {
+		const flashMessage = document.getElementById("flash-message");
+		if (flashMessage) {
+			flashMessage.style.opacity = "0";
+			setTimeout(() => {
+				flashMessage.style.display = "none";
+			}, 500); // Tempo para a transição finalizar
+		}
+	}, 3000);
+</script> -->
+
+<%- include ('partials/footer.ejs') %>

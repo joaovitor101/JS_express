@@ -1,0 +1,29 @@
+body {
+    background-color: #f1f1f1;
+}
+
+ul {
+    list-style: square;
+    line-height: 30px;
+}
+
+a {
+    color:#0ba7c6;
+    text-decoration: none;
+    padding: 20px;
+}
+
+th, td {
+    padding: 10px;
+}
+
+footer {
+    text-align: center;    
+}
+
+#flash-message{
+    position: relative;
+    transition: opacity 1s ease-out;
+    z-index: 1;
+    
+}
